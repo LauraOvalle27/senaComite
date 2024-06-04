@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <a class="navbar-brand" href="#">
+    <img src="../static/images/comite_logo.png" class="logo">
+  </a>
+<div class="container">
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav">
+      <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('historialAprendiz')}}">Historial</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('descargosAprendiz')}}">Redactar descargos</a>
+      </li>
+  <form class="d-flex" role="search">
+      <button class="btn btn-submit" id="rolAprendiz" type="submit"><i class="bi bi-person"></i>Aprendiz</button>
+  </form>
+  </div>
+  </div>
+</nav>

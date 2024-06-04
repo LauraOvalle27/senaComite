@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% include "/layout/Aprendiz/navAprendiz.html" %}
+
+
+<div class="col-sm-12" id="semicolumn">
+    <h3>Redactar descargos</h3>
+    <div class="row">
+        <div class="col-12">
+            <div class="container-2">
+                <div class="nameAprendiz">
+                    Detalles comité
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="causesAprendiz" class="form-label">Escribir descargos</label>
+                <textarea class="form-control" id="causes"></textarea>
+            </div>
+            <div class="col-sm-12">
+                <label for="branchAprendiz" class="form-label">Seleccionar Documentos:</label>
+                <div class="calendar">
+                    <input type="file" class="form-control" id="inputGroupFile04"
+                        aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                </div>
+            </div>
+            <div class="col-mb-3">
+                <div class="mb-3 text-center">
+                    <button type="submit" class="btn btn-submit" id="boton">Guardar</button>
+                    <p id="message"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

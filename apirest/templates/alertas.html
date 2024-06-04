@@ -1,20 +1,37 @@
 {% extends "base.html" %}
 {% block content %}
-            <form action="/niveles/l"
+<script>
+ function IrCoordinacion(){
+    location.href="/reportarAprendizcoordinacion"
+ }
+ function IrInstructor(){
+    location.href="/reportarAprendizinstructor"
+ }
+ 
+</script>
+            <form 
             <div class="w3-container">
                 <div class="sena-card2">
             <header class="sena-sombra sena-color"><font size=6 color=yellow ><b>{{ msgito}}<b></font></header></div>
             
             <br><br>
-            
+            <script>
+                setTimeout("IrCoordinacion()",3000)
+            </script>
             </form>
 
-        <script>
-            function Voy(){
-            location.href="/niveles/l"
-            }
-            setTimeout('Voy()',5000)
-        </script>
+            <form 
+            <div class="w3-container">
+                <div class="sena-card2">
+            <header class="sena-sombra sena-color"><font size=6 color=yellow ><b>{{ msgitoInstructor}}<b></font></header></div>
+            
+            <br><br>
+            <script>
+                setTimeout("IrInstructor()",3000)
+            </script>
+            </form>
+
         {% endblock content %}
     </body>
+    
 </html>

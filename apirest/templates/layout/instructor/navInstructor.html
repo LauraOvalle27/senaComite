@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <a class="navbar-brand" href="{{ url_for('inicioInstructor') }}">
+      <img src="../static/images/comite_logo.png" class="logo">
+    </a>
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link active" href="{{ url_for('registrarInstructor') }}">Registrar aprendiz</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ url_for('reportarInstructor') }}">Realizar reporte</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ url_for('consultarInstructor') }}">Consultar aprendiz</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+              <button class="btn btn-submit" id="rolnav" type="submit"><i class="bi bi-person"></i>Instructor</button>
+          </form>
+          </div>
+          </div>
+      </nav>

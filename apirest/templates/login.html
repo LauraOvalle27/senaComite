@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div>
+    <div class="row">          
+      <div class="col-sm-12" id="column">
+          <form action="/login" method="POST">
+                <img src="../static/images/comite_logo.png" class="logo-login">
+                <br>
+                <h1 class="login-title">Iniciar Sesión</h1>
+                <br>
+                <div class="mb-3">
+                    <label for="exampleInputId" class="form-label"> Número de documento</label>
+                    <input type="text" class="form-control" id="exampleInputId" aria-describedby="IdHelp"name="docNumber">               
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">  
+                </div>
+                <button type="submit" class="btn btn-login">Ingresar</button>
+                <br>
+                <div class="password">
+                    <button class="recover">
+                        ¿Olvidaste tu contraseña?
+                    </button>
+                </div>
+          </form>
+        </div>  
+    </div>     
+  </div>
+
+  {% endblock content %}

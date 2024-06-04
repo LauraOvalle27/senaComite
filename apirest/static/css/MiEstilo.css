@@ -86,8 +86,8 @@ html {
   -webkit-box-shadow: 10px 10px 5px 0px #ABEBC6;
   -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 10px 10px 25px 0px #ABEBC6;
-  #padding: 10px 10px 10px 10px;
-  # padding: 10px 0;
+  padding: 10px 10px 10px 10px;
+  padding: 10px 0;
   
    margin:10,10,10,10;
    border:10,10,10,10;
@@ -120,8 +120,8 @@ html {
   -webkit-box-shadow: 10px 10px 5px 0px #ABEBC6;
   -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 10px 10px 25px 0px #ABEBC6;
-  #padding: 10px 10px 10px 10px;
-  # padding: 10px 0;
+  padding: 10px 10px 10px 10px;
+  padding: 10px 0;
   
    margin:10,10,10,10;
    border:10,10,10,10;
@@ -170,19 +170,19 @@ html {
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   }  
   .sena-card2{
-    margin-top: 10px;
+  margin-top: 10px;
   margin-bottom: 10px;
   margin-right: 10px;
   margin-left: 20px;
-    border-radius: 13px 13px 13px 13px;
-    -moz-border-radius: 13px 13px 13px 13px;
-    -webkit-border-radius: 13px 13px 13px 13px;
-    border: 1px solid #000000;
+  border-radius: 13px 13px 13px 13px;
+  -moz-border-radius: 13px 13px 13px 13px;
+  -webkit-border-radius: 13px 13px 13px 13px;
+  border: 1px solid #000000;
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   }
-      main {
+    main {
     padding: 0.75rem;
 }
 
@@ -270,7 +270,7 @@ html {
     padding: 1.5rem 3rem;
     margin: auto;
     color: var(--color-info);
-    background-color:va(--thumbBG)
+    background-color:va(--thumbBG);
     font-weight: bold;
     height:50px;
     
@@ -374,4 +374,269 @@ html {
   font-weight: 600;
   font-style: normal;
 }
+
+
+/* Estilos navbar */
+
+.logo{
+  width: 200px;
+}
+
+.nav-link{
+  color: #000000;
+}
+
+#rolnav{
+  margin-left: 50px;
+  background: #6d9d6d;
+  color: white;
+  width: 200px;
+}
+
+#semicolumn{
+  background-color:  rgb(249, 249, 249);
+  padding: 70px;
+}
+
+#semicolumn h3 {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+/* Estilos formulario */
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Estilos para cada fila */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#boton{
+  background: #6d9d6d;
+  color: white;
+  margin-top: 50px;
+  text-align: center;
+  width: 200px;
+  height: 45px;
+}
+
+/* Estilos para registrar aprendiz rol instructor */
+
+.text-registrar{
+  margin: 40px;
+  font-size: 18px;
+}
+
+/* Estilos para consultar historial rol instructor */
+
+.text{
+  margin: 30px;
+  font-size: 18px;
+}
+
+#boton-consultar{
+  background: #6d9d6d;
+  color: white;
+  margin-top: 30px;
+  text-align: center;
+  width: 200px;
+  height: 45px;
+}
+
+/* Estilos para rol coordinacion */
+
+/* Estilos para procesos pendientes rol coordinacion */
+
+#boton-2{
+  background: #6d9d6d;
+  color: white;
+  text-align: center;
+  width: 200px;
+  margin-top: 30px;
+}
+
+.calendar{
+  margin-top: 20px;
+}
+
+/* Estilos para citacion rol coordinacion */
+
+
+#date-acta{
+  width: 400px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+
+#boton{
+  background: #6d9d6d;
+  color: white;
+  margin-top: 50px;
+  text-align: center;
+  width: 200px;
+  height: 45px;
+}
+
+/* Estilos para citacion rol aprendiz*/
+
+#rolAprendiz{
+  margin-left: 250px;
+  background: #6d9d6d;
+  color: white;
+  width: 200px;
+}
+
+/* Estilos para descargos rol aprendiz*/
+
+.container-2{
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  height: 50px;
+  padding: 10px;
+}
+
+
+.card-menu{
+  width: 220px;
+  height: 200px;
+  background-color: #6d9d6d;
+  color: white;
+  margin-top: 40px;
+  text-align: center;
+}
+  
+  
+#menu{
+  font-size: 50px;
+  justify-content: center;
+  align-items: center;
+  display: flex; /* Hace que el contenido sea un contenedor flex */
+  margin-top: 15px;
+}
+  
+.row-1{
+  margin-top: 70px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Asegura que las filas se envuelvan si no caben en una sola línea */
+  text-align: center;
+  margin-left: 150px;
+}
+
+#columnMenu {
+  display: flex;
+  flex-direction: column; /* Cambia la dirección de los elementos a columna */
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Alinea el contenido horizontalmente */
+  margin: auto 0;
+}
+
+#rolRelator{
+  margin-left: 250px;
+  background: #6d9d6d;
+  color: white;
+  width: 200px;
+}
+
+.title-welcome{
+  text-align: center;
+  margin: 30px;
+}
+
+.card-title{
+  text-decoration: none;
+  font-size: 30px;
+  color: white;
+}
+
+a:hover{
+  color:white;
+}
+
+
+/* Estilos login */
+
+/* Estilo columna login */
+
+#column{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+@media screen and (max-width: 890px){
+  #background-evaseg{
+      background-image: none;
+  }
+}
+
+/* Estilo formulario*/
+
+
+.login-img{
+  max-width: 100%; /* La imagen no superará el ancho del contenedor */
+  max-height: 100%; /* La imagen no superará la altura del contenedor */
+  width: 350px; /* La imagen mantendrá su relación de aspecto */
+  height: 400px;
+}
+
+.logo-login{
+  margin-bottom: 50px;
+}
+
+.login-title{
+  text-align: center;
+}
+
+.recover-text{
+  margin-top: 5px;
+  font-size: 25px;
+}
+
+
+input{
+  width: 300px;
+}
+
+.btn-login{
+  width: 300px;
+  background: #63a154;
+  color: white;
+  margin-top: 5px;
+}
+
+.password{
+  text-align: center;
+  margin-top: 10px;
+}
+
+.recover{
+  border: 0px;
+  background-color: transparent;
+}
+
+.card-title{
+  text-decoration: none;
+  font-size: 30px;
+  color: white;
+}
+
+.card-title-nombre{
+  margin: 20px;
+}
+
 

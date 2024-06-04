@@ -1,0 +1,103 @@
+<div class="col-sm-12" id="semicolumn">
+    <h3>Reportar Aprendiz</h3>
+    <form class="form" action="/reportarAprendizinstructor/i" method="POST">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="Ficha" class="form-label">Ficha</label>
+                    <input type="text" class="form-control" id="Ficha"
+                         name="Ficha">
+                </form>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="CedulaUsuario" class="form-label">Numero de identificación</label>
+                    <input type="text" class="form-control" id="CedulaUsuario"
+                         name="CedulaUsuario">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="Nombre" class="form-label">Nombre de aprendiz</label>
+                    <input type="text" class="form-control" id="Nombre"
+                         name="Nombre">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="ProgramaFormacion" class="form-label">Programa de formación</label>
+                    <input type="text" class="form-control" id="ProgramaFormacion"
+                         name="ProgramaFormacion">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="branchAprendiz" class="form-label">Coordinación</label>
+                    <input type="text" class="form-control" id="Coordinacion"
+                         name="Coordinacion">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <label for="TipoFalta" class="form-label">Tipo de falta</label>
+                <select class="form-select" aria-label="Default select example" name="TipoFalta">
+                    <option selected>Tipo de falta...</option>
+                    <option value="Leve">Leve</option>
+                    <option value="Grave">Grave</option>
+                    <option value="Gravísima">Gravísima</option>
+                </select>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="CausasReporte" class="form-label">Causas del reporte</label>
+                    <textarea class="form-control" id="causes"  name="CausasReporte"></textarea>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="Faltas" class="form-label">Faltas</label>
+                    <select class="form-select" aria-label="Default select example" name="Faltas" id ="Faltas" onchange="mostrarcampoFalta()" >
+                        <option selected disabled>Seleccione el rol</option>>
+                        <option value="Primera">Plagiar materiales, trabajos y otros documentos</option>
+                        <option value="Segunda">Realizar fraude en evaluaciones</option>
+                        <option value="Tercera">Hurtar, estafar o abusar de la confianza de cualquier integrante de la comunidad educativa</option>
+                        <option value="Cuarta">Contribuir al desorden y/o desaseo</option>
+                        <option value="Quinta">Destruir y dañar instalaciones físicas, equipos, software…</option>
+                        <option value="Sexta">Permanecer con el uniforme acordado en situaciones que deteriore la imagen institucional</option>
+                        <option value="Septima">Generar, transmitir o publicar información violenta, insultos, …</option>
+                        <option value="Octava">Actos que saboteen actividades de formación</option>
+                        <option value="Novena">Falsificar documentos oficiales</option>
+                        <option value="Decima">Fumar en áreas no permitidas</option>
+                        <option value="Otro">Otro...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6" id="Otro" style="display:none;">
+                <div class="mb-3">
+                    <input type="text" id="Otro" name="Otro" class="form-control"><br>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <label for="EvidenciaPDF" class="form-label" >Seleccionar Documentos</label>
+                <div class="input-group">
+                    <input type="file" class="form-control" id="inputGroupFile04" name="EvidenciaPDF"
+                        aria-describedby="inputGroupFileAddon04" aria-label="Upload" required>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="mb-3 text-center">
+                    <button type="submit" class="btn btn-submit" id="boton" value="Registrar" onclick="Va1('i')">Enviar</button>
+                    <p id="message"></p>
+                </div>
+            </div>
+        </div>
+    </form>
+    {% if usuarios %}
+        <h2>Usuarios para la Ficha {{ ficha_seleccionada }}</h2>
+        <ul>
+            {% for usuario in usuarios %}
+                <li>{{ usuario[7] }} - {{ usuario[0]}}</li> <!-- Ajusta los índices según los campos de la tabla Usuario -->
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>

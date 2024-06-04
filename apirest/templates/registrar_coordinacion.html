@@ -1,0 +1,45 @@
+<script>
+    function Ir(cual) {
+        document.forms['mio'].action = "/registrarAprendizcoordinacion/" + cual
+        document.forms['mio'].submit();
+
+
+    }
+     
+    function Ir1(cual) {
+        location.href = cual
+    }
+    function Confirmar(que, donde) {
+        if (confirm(que))
+            location.href = donde
+    }
+
+    function Va(tipo) {
+
+        if (tipo == "i")
+            document.forms['mio'].action = "/registrarAprendizcoordinacion/i"
+        if (tipo == "u") {
+            document.forms['mio'].action = "/ambientes/u"
+        }
+
+        document.forms['mio'].submit();
+
+    }
+
+
+    
+
+
+</script>
+
+{% extends "base.html" %}
+{% block content %}
+{% include "/layout/coordinacionLayout/navCoordinacion.html" %}
+
+{% if N == 0 %}
+
+{% include "/layout/coordinacionLayout/registrarCoordinacion.html" %}
+
+{% endif %}
+  
+{% endblock content %}

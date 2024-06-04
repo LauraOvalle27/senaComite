@@ -1,0 +1,77 @@
+<div class="col-sm-12" id="semicolumn">
+    <h3>Registrar Aprendiz</h3>
+    <div class="text-registrar">Digite los siguientes datos del aprendiz que desea registrar</div>
+    <form name=mio method=POST action="/registrarAprendizinstructor/i" class="form"> 
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <div class="mb-3">
+                        <label for="Identificacion" class="form-label">Número de documento</label>
+                        <input type="text" class="form-control" id="Identificacion"
+                             name="Identificacion">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <div class="mb-3">
+                        <label for="Nombre" class="form-label">Nombre completo</label>
+                        <input type="text" class="form-control" id="Nombre"
+                             name="Nombre">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="Correo" class="form-label">Correo</label>
+                    <input type="text" class="form-control" id="Correo"
+                         name="Correo">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="Telefono" class="form-label">Telefono</label>
+                    <input type="text" class="form-control" id="Telefono"
+                        name="Telefono">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="Direccion" class="form-label">Dirección</label>
+                    <input type="text" class="form-control" id="Direccion"
+                        name="Direccion">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="Rol" class="form-label">Rol </label>
+                    <select class="form-select" aria-label="Default select example" name="Rol" id="Rol" onchange="mostrarCampos()">
+                        <option selected disabled>Seleccione el rol</option>
+                        <option value="Coordinacion">Coordinacion</option>
+                        <option value="Instructor">Instructor</option>
+                        <option value="Aprendiz">Aprendiz</option>
+                        <option value="Relator">Relator</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6" id="camposAprendiz" style="display:none;">
+                <div class="mb-3">
+                    <label for="Ficha" class="form-label">Ficha:</label>
+                    <input type="text" id="Ficha" name="Ficha" class="form-control"><br>
+                </div>
+                <div class="mb-3">
+                    <label for="programaFormacion" class="form-label">Programa de Formación:</label>
+                    <input type="text" id="ProgramaFormacion" name="ProgramaFormacion" class="form-control"><br>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="mb-3 text-center">
+                    <button type="submit" class="btn btn-submit" id="boton" value="Registrar" onclick="Va('i')">
+                        Enviar
+                    </button>
+                    <p id="message"></p>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
