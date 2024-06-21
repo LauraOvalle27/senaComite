@@ -1,12 +1,13 @@
 <div class="col-sm-12" id="semicolumn">
     <h3>Reportar Aprendiz</h3>
-    <form class="form" action="/reportarAprendizinstructor/i" method="POST">
+    <form class="form" action="/reportarAprendizcoordinacion/i" method="POST">
         <div class="row">
             <div class="col-sm-6">
                 <div class="mb-3">
-                    <label for="Ficha" class="form-label">Ficha</label>
+                    <label for="Ficha" class="form-label">Ficha </label>
                     <select class="form-select" aria-label="Default select example" id="Ficha" >
                         {% for ficha in fichas %}
+                        <option selected>Seleccione la ficha</option>
                         <option value="">{{ ficha[3] }}</option>
                         {% endfor %}
                       </select>
@@ -17,12 +18,11 @@
                 <div class="mb-3">
                     <label for="CedulaUsuario" class="form-label">Numero de identificación</label>
                     <select class="form-select" aria-label="Default select example" id="CedulaUsuario" >
-                        {% for x in fichas %}
-                        <option value="">{{ ficha[0] }}</option>
-                        {% endfor %}
-                      </select>
+                        <option selected>Seleccione el documento</option>
+                    </select>
                 </div>
             </div>
+
             <div class="col-sm-6">
                 <div class="mb-3">
                     <label for="Nombre" class="form-label">Nombre de aprendiz</label>
@@ -63,7 +63,7 @@
                 <div class="mb-3">
                     <label for="Faltas" class="form-label">Faltas</label>
                     <select class="form-select" aria-label="Default select example" name="Faltas" id ="Faltas" onchange="mostrarcampoFalta()" >
-                        <option selected disabled>Seleccione el rol</option>>
+                        <option selected disabled>Seleccione la falta</option>
                         <option value="Plagiar materiales, trabajos y otros documentos">Plagiar materiales, trabajos y otros documentos</option>
                         <option value="Realizar fraude en evaluaciones">Realizar fraude en evaluaciones</option>
                         <option value="Hurtar, estafar o abusar de la confianza de cualquier integrante de la comunidad educativa">Hurtar, estafar o abusar de la confianza de cualquier integrante de la comunidad educativa</option>
@@ -104,3 +104,5 @@
         </div>
     </form>
 </div>
+
+ 

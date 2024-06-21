@@ -1,201 +1,163 @@
 import sqlite3
-from flask import Flask, jsonify, redirect, render_template,request, url_for, render_template_string
-import json
-#from services.apicnx import cnxsqlite
-from api.cnxSqlite import cnxsqlite  
-from config import configura 
-app=Flask(__name__)
+from flask import Flask, jsonify, request, render_template
+from api.cnxSqlite import cnxsqlite
+from config import configura
+from flask_mail import Mail, Message
+from flask_sqlalchemy import SQLAlchemy
 
-@app.route("/registrarAprendizcoordinacion")
-def ListaAmbiente():
-    sql = "SELECT * FROM Usuario" 
-    con = cnxsqlite()
-    todo = con.Consultar("./comite.db", sql)
-    return json.dumps(todo)
-    
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'password'
 
+app.config['MAIL_SERVER'] = 'lau3232435124@gmail.com'
+app.config['MAIL_PORT'] = 5000
+app.config['MAIL_USE_TLS'] =True 
+app.config['MAIL_USERNAME'] = 'lau3232435124@gmail.com'
+app.config['MAIL_PASSWORD'] = 'password'
 
+mail=Mail(app)
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///Reporte.db'
+db =SQLAlchemy(app)
 
-
-"""
-@app.route("/")
-def inicio():
-    return "Hola"
-
-@app.route("/usua/cc")
-
-@app.route("/usua/to")
-def ListaUsuario():
-    sql="select * from USUA"
-    con=cnxsqlite()   
-    todo=con.Consultar("./comite.db",sql)
-    return json.dumps(todo)
-@app.route("/usua/<id>")
-def ListaUnUsuario(id):
-    sql="select * from USUA where IDUSUA="+str(id)
-    con=cnxsqlite()
-    todo=con.ConsultarUno("./comite.db",sql)
-    return json.dumps(todo)
-"""
-@app.route("/registrarAprendizcoordinacion/i",methods = ['POST'])
-def CrearUsuario(): 
-    datos=request.get_json()
-    Identificacion=datos['Identificacion']
-    Nombre=datos['Nombre']
-    Direccion=datos['Direccion']
-    Telefono=datos['Telefono']
-    Correo=datos['Correo']
-    Ficha=datos['Ficha']
-    ProgramaFormacion=datos['ProgramaFormacion']
-    Rol=datos['Rol']
-
-    sql="insert into Usuario (Identificacion, Nombre,Direccion,Telefono,Correo,Ficha,ProgramaFormacion,Rol) values('"+Identificacion+"','"+Nombre+"','"+Direccion+"', '"+Telefono+"', '"+Correo+"', '"+Ficha+"', '"+ProgramaFormacion+"', '"+Rol+"')"
-    con=cnxsqlite() 
-    todo=con.Ejecutar("./comite.db",sql)
-    return"Datos recibidos correctamente"
-
-"""
-@app.route("/registrarAprendizinstructor/i",methods = ['POST'])
-def CrearUsuarioinst(): 
-    datos=request.get_json()
-    Identificacion=datos['Identificacion']
-    Nombre=datos['Nombre']
-    Direccion=datos['Direccion']
-    Telefono=datos['Telefono']
-    Correo=datos['Correo']
-    Ficha=datos['Ficha']
-    ProgramaFormacion=datos['ProgramaFormacion']
-    Rol=datos['Rol']
-
-    sql="insert into Usuario (Identificacion, Nombre,Direccion,Telefono,Correo,Ficha,ProgramaFormacion,Rol) values('"+Identificacion+"','"+Nombre+"','"+Direccion+"', '"+Telefono+"', '"+Correo+"', '"+Ficha+"', '"+ProgramaFormacion+"', '"+Rol+"')"
-    con=cnxsqlite() 
-    todo=con.Ejecutar("./comite.db",sql)
-    return"Datos recibidos correctamente"
-
- """
-
-
-@app.route("/reportarAprendizcoordinacion/i", methods=['POST'])
-def iniciarProceso():
-    # Obtener los datos del JSON recibido
-    datos = request.get_json()
-    # Extraer los datos del JSON
-    Ficha = datos.get('Ficha')
-    CedulaUsuario = datos.get('CedulaUsuario')
-    Nombre = datos.get('Nombre')
-    ProgramaFormacion = datos.get('ProgramaFormacion')
-    Coordinacion = datos.get('Coordinacion')
-    TipoFalta = datos.get('TipoFalta')
-    CausasReporte = datos.get('CausasReporte')
-    Faltas = datos.get('Faltas')
-    EvidenciaPDF = datos.get('EvidenciaPDF')
-    
-    # Imprimir los datos recibidos en la consola
-    print(f"Datos recibidos: Ficha={Ficha}, CedulaUsuario={CedulaUsuario}, Nombre={Nombre}, ProgramaFormacion={ProgramaFormacion}, Coordinacion={Coordinacion}, TipoFalta={TipoFalta}, CausasReporte={CausasReporte}, Faltas={Faltas},EvidenciaPDF={EvidenciaPDF}")
-
-    # Insertar los datos en la base de datos
-    con = sqlite3.connect("./comite.db")
-    cur = con.cursor()
-    # Aquí insertamos los datos sin incluir el campo IdReporte, que se autoincrementará automáticamente
-    cur.execute("INSERT INTO Reporte (Ficha, CedulaUsuario, Nombre, ProgramaFormacion, Coordinacion, TipoFalta, CausasReporte, Faltas, EvidenciaPDF) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (Ficha, CedulaUsuario, Nombre, ProgramaFormacion, Coordinacion, TipoFalta, CausasReporte, Faltas, EvidenciaPDF))
-    con.commit()
-    con.close()
-
-
-@app.route("/reportarAprendizinstructor/i", methods=['POST'])
-def iniciarProcesoInstructor():
-    datos = request.get_json()
-    IdReporte = datos.get('IdReporte')
-    Ficha = datos.get('Ficha')
-    CedulaUsuario = datos.get('CedulaUsuario')
-    Nombre = datos.get('Nombre')
-    ProgramaFormacion = datos.get('ProgramaFormacion')
-    Coordinacion = datos.get('Coordinacion')
-    TipoFalta = datos.get('TipoFalta')
-    CausasReporte = datos.get('CausasReporte')
-    Faltas = datos.get('Faltas')
-    EvidenciaPDF = datos.get('EvidenciaPDF')
-
-    # Imprimir los datos recibidos en la consola
-    print(f"Datos recibidos: Ficha={Ficha}, CedulaUsuario={CedulaUsuario}, Nombre={Nombre}, ProgramaFormacion={ProgramaFormacion}, Coordinacion={Coordinacion}, TipoFalta={TipoFalta}, CausasReporte={CausasReporte}, Faltas={Faltas}, EvidenciaPDF={EvidenciaPDF}")
-
-    # Insertar los datos en la base de datos
-    con = sqlite3.connect("./comite.db")
-    cur = con.cursor()
-    # Aquí insertamos los datos sin incluir el campo IdReporte, que se autoincrementará automáticamente
-    cur.execute("INSERT INTO Reporte (IdReporte, Ficha, CedulaUsuario, Nombre, ProgramaFormacion, Coordinacion, TipoFalta, CausasReporte, Faltas,EvidenciaPDF) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (IdReporte, Ficha, CedulaUsuario, Nombre, ProgramaFormacion, Coordinacion, TipoFalta, CausasReporte, Faltas, EvidenciaPDF))
-    con.commit()
-    con.close()
-
-
-
-@app.route("/consultarcoordinacion/i", methods=["POST"])
-def consultarAprendiz():
-    CedulaUsuario=request.form.get('CedulaUsuario')
-
-    con = sqlite3.connect("./comite.db")
-    cur = con.cursor()
-
-    sql="select * from Reporte where CedulaUsuario = ?"
-    cur.execute(sql, (CedulaUsuario,))
-
-    Reporte = cur.fetchall()
-
-    print("Datos obtenidos de la base de datos:", Reporte)
-
-    con.commit()
-    con.close()
-
-    if Reporte:
-        Reporte_dict = [{
-            'IdReporte': row[0],
-            'CedulaUsuario': row[1],
-            'Nombre': row[2],
-            'Ficha': row[3],
-            'ProgramaFormacion': row[4],
-            'Coordinacion': row[5],
-            'TipoFalta': row[6],
-            'CausasReporte': row[7],
-            'Faltas': row[8],
-            'EvidenciaPDF': row[9]
-        } for row in Reporte]
-
-    
-
-
-        return render_template("busqueda_historial.html", reportes= Reporte_dict)
+app.route("/citarComite", methods= ['POST'])
+def Citar():
+    Usuario_id =request.form['identificacion']
+    Usuario =Usuario.query.get(Usuario_id)
+    if Usuario:
+        subject = "Nueva citación"
+        body =f"Hola {Usuario.Nombre}, has sido citado a comite el dia"
         
 
-    else:
+# Ruta para obtener la lista de usuarios registrados
+@app.route("/registrarAprendizcoordinacion", methods=['GET'])
+def ListaUsuarios():
+    try:
+        sql = "SELECT * FROM Usuario"
+        con = cnxsqlite()
+        todo = con.Consultar("./comite.db", sql)
+        return jsonify(todo)
+    except Exception as e:
+        return str(e), 500
 
-        msgitos="No existen reportes para este aprendiz" 
-        return render_template("alertas.html",msgito=msgitos)
+
+# Ruta para registrar un nuevo usuario coordinación
+@app.route("/registrarAprendizcoordinacion/i", methods=['POST'])
+def CrearUsuario():
+    try:
+        datos = request.get_json()
+        Identificacion = datos['Identificacion']
+        Nombre = datos['Nombre']
+        Direccion = datos['Direccion']
+        Telefono = datos['Telefono']
+        Correo = datos['Correo']
+        Ficha = datos['Ficha']
+        ProgramaFormacion = datos['ProgramaFormacion']
+        Rol = datos['Rol']
+
+        sql = "INSERT INTO Usuario (Identificacion, Nombre, Direccion, Telefono, Correo, Ficha, ProgramaFormacion, Rol) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+        con = cnxsqlite()
+        con.Ejecutar("./comite.db", sql, (Identificacion, Nombre, Direccion, Telefono, Correo, Ficha, ProgramaFormacion, Rol))
+        
+        return "Datos recibidos correctamente"
+    except Exception as e:
+        return str(e), 500
 
 
-"""
-@app.route("/usua/u",methods = ['PUT'])
-def EditaUsuario(): 
-    datos=request.get_json()
-    id=datos['IDUSUARIO']
-    ape=datos['APELLIDO']
-    nom=datos['NOMBRE']
-    sql="update USUA set NOMBRE='"+nom+"',APELLIDO='"+ape+"' where IDUSUA="+str(id)
-    con=cnxsqlite()
-    todo=con.Ejecutar("./comite.db",sql)
-
-    return "OK"
-@app.route("/usua/d/<id>",methods = ['DELETE'])
-def BorrarUsuario(id): 
-    sql="delete from USUA where IDUSUA="+str(id)
-    con=cnxsqlite()
-    todo=con.Ejecutar("./comite.db",sql)
-    return "OK"
-@app.route("/usua/menus",methods=['GET'])
-def VerMenu():
-    sql="select * from MODULOS"
-    con=cnxsqlite()
-    todo=con.ConsultarJson("./comite.db",sql)
+# Ruta para obtener la lista de fichas de aprendices
+@app.route("/reportarAprendizcoordinacion", methods=['GET'])
+def TraerFicha():
+    sql = "SELECT Identificacion, Nombre, ProgramaFormacion, Ficha, Direccion, Telefono, Correo FROM Usuario"
+    con = cnxsqlite()
+    todo = con.Consultar("./comite.db", sql)
     return jsonify(todo)
-"""
-if __name__=='__main__':
-    app.run(debug=True,port=configura['PUERTOREST'],host='0.0.0.0')
+
+
+# Ruta para registrar un nuevo proceso de reporte de aprendices rol coordinación
+@app.route("/reportarAprendizcoordinacion/i", methods=['POST'])
+def iniciarProceso():
+    try:
+        datos = request.get_json()
+        Ficha = datos.get('Ficha')
+        CedulaUsuario = datos.get('CedulaUsuario')
+        Nombre = datos.get('Nombre')
+        ProgramaFormacion = datos.get('ProgramaFormacion')
+        Coordinacion = datos.get('Coordinacion')
+        TipoFalta = datos.get('TipoFalta')
+        CausasReporte = datos.get('CausasReporte')
+        Faltas = datos.get('Faltas')
+        FechaHora = datos.get('FechaHora')
+        EvidenciaPDF = datos.get('EvidenciaPDF')
+
+        con = sqlite3.connect("./comite.db")
+        cur = con.cursor()
+        cur.execute("INSERT INTO Reporte (Ficha, CedulaUsuario, Nombre, ProgramaFormacion, Coordinacion, TipoFalta, CausasReporte, Faltas, FechaHora, EvidenciaPDF) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+                    (Ficha, CedulaUsuario, Nombre, ProgramaFormacion, Coordinacion, TipoFalta, CausasReporte, Faltas, FechaHora, EvidenciaPDF))
+        con.commit()
+        con.close()
+
+        return "Proceso de reporte iniciado correctamente"
+    except Exception as e:
+        return str(e), 500
+
+
+# Ruta para consultar reportes de aprendices por coordinación
+@app.route("/consultarcoordinacion/i", methods=["POST"])
+def consultarAprendiz():
+    try:
+        CedulaUsuario = request.form.get('CedulaUsuario')
+
+        con = sqlite3.connect("./comite.db")
+        cur = con.cursor()
+
+        sql = "SELECT * FROM Reporte WHERE CedulaUsuario = ?"
+        cur.execute(sql, (CedulaUsuario,))
+
+        Reporte = cur.fetchall()
+        con.close()
+
+        if Reporte:
+            Reporte_dict = [{
+                'IdReporte': row[0],
+                'CedulaUsuario': row[1],
+                'Nombre': row[2],
+                'Ficha': row[3],
+                'ProgramaFormacion': row[4],
+                'Coordinacion': row[5],
+                'TipoFalta': row[6],
+                'CausasReporte': row[7],
+                'Faltas': row[8],
+                'EvidenciaPDF': row[9]
+            } for row in Reporte]
+
+            return render_template("busqueda_historial.html", reportes=Reporte_dict)
+        else:
+            msgitos = "No existen reportes para este aprendiz"
+            return render_template("alertas.html", msgito=msgitos)
+    except Exception as e:
+        return str(e), 500
+
+
+# Ruta para crear un acta
+@app.route("/registrarActa/i", methods=["POST"])
+def CrearActa():
+    try:
+        datos = request.get_json()
+        IdActa = datos['IdActa']
+        FechaActa = datos['FechaActa']
+        Hora = datos['Hora']
+        DetallesActa = datos['DetallesActa']
+        IdPlanMejora = datos['PlanMejora']
+
+        con = sqlite3.connect("./comite.db")
+        cur = con.cursor()
+
+        cur.execute("INSERT INTO Acta (IdActa, FechaActa, Hora, DetallesActa, PlanMejora) VALUES (?, ?, ?, ?, ?)", (IdActa, FechaActa, Hora, DetallesActa, IdPlanMejora))
+        con.commit()
+        con.close()
+
+        return "Acta creada correctamente"
+    except Exception as e:
+        return str(e), 500
+
+
+if __name__ == '__main__':
+    app.run(debug=True, port=configura['PUERTOREST'], host='0.0.0.0')

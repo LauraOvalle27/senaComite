@@ -1,16 +1,25 @@
 <div class="col-sm-12" id="semicolumn">
-    <h3>Procesos pendientes</h3>
-    <div class="card">
-      <div class="card-body">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="checkbox"  onclick="mostrarBoton(this)">
-          <label class="form-check-label" for="checkbox">
-          </label>
-        </div>
-        <h5 class="card-title">Caso #1</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">Nombre aprendiz</h6>
-        <p class="card-text">Hechos</p>
-      </div>
-    </div>
-    <a class="btn btn" id="boton-2" href="{{url_for('citacion')}}">Citar a comité</a>
-  </div>
+  {% for reporte in reportes %}
+            <div class="card-historial">
+                <div class="card-header">Id del reporte: {{ reporte.IdReporte }}</div>
+                <div class="card-body">
+                    <div class="columnas">
+                        <h5 class="card-title-nombre">Información del aprendiz</h5>
+                  <p class="card-text">Cedula: </p>{{ reporte.CedulaUsuario }}
+                  <p class="card-text">Nombre:</p> {{ reporte.Nombre }}
+                  <p class="card-text">Ficha:</p> {{ reporte.Ficha }}
+                  <p class="card-text">Programa formación:</p> {{ reporte.ProgramaFormacion }}
+                  <p class="card-text">Coordinación:</p>{{ reporte.Coordinacion }}
+
+                  <h5 class="card-title-nombre">Información del reporte</h5>
+                  <p class="card-text">Tipo de falta:</p> {{ reporte.TipoFalta }}
+                  <p class="card-text">Causas del reporte: </p>{{ reporte.CausasReporte }}
+                  <p class="card-text">Faltas: </p>{{ reporte.Faltas }}
+                  <p class="card-text">Fecha y hora: </p>{{ reporte.FechaHora }}
+                  <p class="card-text">EvidenciaPDF:</p>{{ reporte.EvidenciaPDF }}
+                </div>
+                <a class="btn btn" id="boton-2" href="{{url_for('citacion')}}">Citar a comité</a>
+              </div>
+            </div>
+            {% endfor %}
+           

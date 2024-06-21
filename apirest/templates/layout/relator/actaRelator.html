@@ -1,0 +1,44 @@
+
+    <div class="col-sm-12" id="semicolumn">
+        <h3>Generar Acta</h3>
+        <form class="form" action="/registrarActa/i" method="POST">
+            <div class="row">
+                <div class="mb-3">
+                    <label for="FechaActa" class="form-label">Fecha:</label>
+                    <div class="calendar">
+                        <div>
+                            <input type="date" id="FechaActa" name="FechaActa">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="HoraActa" class="form-label">Hora:</label>
+                    <div class="calendar">
+                        <div>
+                            <input type="time" id="HoraActa" name="HoraActa">
+                        </div>
+                    </div>
+                </div>
+                    <div class="mb-3">
+                        <label for="DetallesActa" class="form-label">Detalles comité:</label>
+                        <div class="calendar">
+                            <textarea class="form-control" id="DetallesActa"  name="DetallesActa"></textarea>
+                        </div>
+                    </div>
+                <div class="mb-3">
+                    <label for="branchAprendiz" class="form-label">Seleccionar Documentos:</label>
+                    <div class="calendar">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                            aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                    </div>
+                </div>
+                <div class="col-mb-3">
+                    <div class="mb-3 text-center">
+                        <button type="submit" class="btn btn-submit" id="boton">Generar</button>
+                        <p id="message"></p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </form>
+    </div>

@@ -1,29 +1,26 @@
-<!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Resultados de la Consulta</title>
-        </head>
-        <body>
-            <h2>Resultados de la Consulta</h2>
+<div class="col-sm-12" id="semicolumn">
+    <h3>Historial</h3>
             {% for reporte in reportes %}
             <div class="card-historial">
                 <div class="card-header">Id del reporte: {{ reporte.IdReporte }}</div>
                 <div class="card-body">
-                  <h5 class="card-title-nombre">Información del aprendiz</h5>
-                  <h6 class="card-text">Cedula:</h6> {{ reporte.CedulaUsuario }}
+                    <div class="columnas">
+                        <h5 class="card-title-nombre">Información del aprendiz</h5>
+                  <p class="card-text">Cedula: </p>{{ reporte.CedulaUsuario }}
                   <p class="card-text">Nombre:</p> {{ reporte.Nombre }}
                   <p class="card-text">Ficha:</p> {{ reporte.Ficha }}
                   <p class="card-text">Programa formación:</p> {{ reporte.ProgramaFormacion }}
                   <p class="card-text">Coordinación:</p>{{ reporte.Coordinacion }}
+
                   <h5 class="card-title-nombre">Información del reporte</h5>
-                  <p class="card-text">Tipo de falta:{{ reporte.TipoFalta }}</p>
-                  <p class="card-text">Causas del reporte:{{ reporte.CausasReporte }} </p>
-                  <p class="card-text">Faltas: {{ reporte.Faltas }} </p>
-                  <p class="card-text">EvidenciaPDF: {{ reporte.EvidenciaPDF }}</p>
+                  <p class="card-text">Tipo de falta:</p> {{ reporte.TipoFalta }}
+                  <p class="card-text">Causas del reporte: </p>{{ reporte.CausasReporte }}
+                  <p class="card-text">Faltas: </p>{{ reporte.Faltas }}
+                  <p class="card-text">Fecha y hora: </p>{{ reporte.FechaHora }}
+                  <p class="card-text">EvidenciaPDF:</p>{{ reporte.EvidenciaPDF }}
+                </div>
+                  
                 </div>
             </div>
             {% endfor %}
-        </body>
-        </html>
+</div>

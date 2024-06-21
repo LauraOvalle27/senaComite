@@ -29,6 +29,7 @@ def bd():
         TipoFalta TEXT NOT NULL,
         CausasReporte TEXT NOT NULL, 
         Faltas INTEGER NOT NULL,
+        FechaHora DATETIME NOT NULL,
         EvidenciaPDF TEXT NOT NULL, 
         FOREIGN KEY(CedulaUsuario) REFERENCES Usuario (Identificacion)
     );
@@ -74,18 +75,23 @@ def bd():
 
     CREATE TABLE Citacion(
         IdProceso INTEGER NOT NULL,
-        IdComite INTEGER NOT NULL,
-        Correo TEXT NOT NULL,
+        Identificacion INTEGER NOT NULL,
         FOREIGN KEY (IdProceso) REFERENCES Proceso(IdProceso),
-        FOREIGN KEY (IdComite) REFERENCES Usuario(Identificacion),
-        FOREIGN KEY (Correo) REFERENCES Usuario(Correo)
+        FOREIGN KEY (Identificacion) REFERENCES Usuario(Identificacion)
+    
     );
 
     INSERT INTO Usuario (Identificacion, Nombre, ProgramaFormacion, Correo, Ficha, Telefono, Direccion, Rol) 
-    VALUES (10468594, 'Miguel', 'ADSO', 'miguel@gmail.com', 451230, 233456, 'carrera 45 #85', 1);
+    VALUES (10468595, 'Ana', 'ADSO', 'ana@gmail.com', 451231, 233457, 'calle 12 #34', 2),
+           (10468596, 'Carlos', 'ADSO', 'carlos@gmail.com', 451232, 233458, 'avenida 9 #10', 1),
+           (10468597, 'Laura', 'ADSO', 'laura@gmail.com', 451233, 233459, 'carrera 7 #8', 2),
+           (10468598, 'Jorge', 'ADSO', 'jorge@gmail.com', 451234, 233460, 'carrera 3 #6', 1),
+           (10468599, 'Sofia', 'ADSO', 'sofia@gmail.com', 451235, 233461, 'calle 45 #78', 2);
 
-    INSERT INTO Reporte (IdReporte, Ficha, CedulaUsuario, Nombre, ProgramaFormacion, Coordinacion, TipoFalta, CausasReporte, Faltas, EvidenciaPDF) 
-    VALUES (1, 1423647, 10468594, 'juanito pablo', 'adso', 'logistica', 'grave', 'El joven fomenta el desorden', 'Contribuir al desaseo', 'hello.PDF');
+
+    
+    INSERT INTO Reporte (IdReporte, Ficha, CedulaUsuario, Nombre, ProgramaFormacion, Coordinacion, TipoFalta, CausasReporte, Faltas, FechaHora, EvidenciaPDF) 
+    VALUES (1, 451231, 10468595, 'Ana', 'ADSO', 'logistica', 'grave', 'El joven fomenta el desorden', 'Contribuir al desaseo', '04/06/2024 3:34', 'hello.PDF');
     """
     cur.executescript(script)
     conn.commit()

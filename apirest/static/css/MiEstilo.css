@@ -278,18 +278,8 @@ html {
 
 
 
-.sena__informacion-card-container {
-    gap: 3.125rem;
-    padding: 1.5rem 3rem;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
 
-}
 
-.sena__informacion-card-text {
-    color: var(--primary-text);
-}
 
 
 .sena__informacion-card-icon {
@@ -330,30 +320,7 @@ html {
         height: 4.375rem;
     }
 }
-:root {
-  --primary: #39a900;
-  --secondary: #98fe58;
-  --tertiary: #f2ffe5;
-  --alternate: #29690b;
-  --primary-text: black;
-  --secondary-text: #5d5d5d;
-  --alternate-text: #919191;
-  --primary-background: #fff;
-  --secondary-background: #E6E6E6;
-  --alternate-background: #f1f5f5;
-  --color-success: #52d726;
-  --color-error: #e74c3c;
-  --color-warning: #f1c40f;
-  --color-info: #ffffff;
-  --primary-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-  --primary-font-family: 'Work Sans Regular', sans-serif;
-  --secondary-font-family: 'Work Sans Bold', sans-serif;
-  --bp-small: 480px;
-  --bp-medium: 767px;
-  --bp-large: 1200px;
-  --web-margin: 1366px;
-  
-}
+
 @font-face {
   font-family: 'Work Sans Regular';
   src: url('../fonts/WorkSans-Regular.ttf') format('truetype');
@@ -629,6 +596,10 @@ input{
   background-color: transparent;
 }
 
+.card-historial{
+  margin-top: 30px;
+}
+
 .card-title{
   text-decoration: none;
   font-size: 30px;
@@ -639,4 +610,22 @@ input{
   margin: 20px;
 }
 
+.historial-title{
+  margin: 30px;
+}
 
+.card-text{
+  margin: 10px;
+  font-weight: bold;
+}
+
+.columnas{
+  columns: 2;
+}
+
+.card-header{
+  background-color: #63a154;
+  font-weight: bold;
+  font-size: 18px;
+
+}
